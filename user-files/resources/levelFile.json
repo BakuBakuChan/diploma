@@ -1,0 +1,14 @@
+[
+  {
+    "level": "ERROR",
+    "fileName": "cat1.jpg",
+    "contentType": "image/jpg",
+    "message": "Tempus quam pellentesque nec nam. In tellus integer feugiat scelerisque. Non diam phasellus vestibulum lorem sed. Aenean et tortor at risus viverra adipiscing at. In dictum non consectetur a erat nam at. Urna nunc id cursus metus aliquam. Eget lorem dolor sed viverra ipsum. Turpis egestas sed tempus urna et pharetra. Vestibulum sed arcu non odio euismod lacinia at quis. Sed risus pretium quam vulputate. Sollicitudin ac orci phasellus egestas. Elementum pulvinar etiam non quam lacus suspendisse faucibus interdum posuere.Risus ultricies tristique nulla aliquet enim tortor at auctor. Adipiscing elit ut aliquam purus. Nulla pellentesque dignissim enim sit amet venenatis urna cursus eget. Amet dictum sit amet justo donec enim diam. Dui accumsan sit amet nulla facilisi morbi tempus iaculis. Nunc consequat interdum varius sit amet. Sit amet dictum sit amet justo donec. Tellus at urna condimentum mattis pellentesque id. Tempus urna et pharetra pharetra massa massa ultricies mi. Gravida arcu ac tortor dignissim convallis. Porta non pulvinar neque laoreet suspendisse. Interdum varius sit amet mattis."
+  },
+  {
+    "level": "WARN",
+    "fileName": "lorem_impus1.txt",
+    "contentType": "text/plain",
+    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum morbi blandit cursus risus at ultrices mi."
+  }
+]
