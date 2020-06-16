@@ -12,7 +12,7 @@ object myRequests {
   var mainHeaders = Map(
     "Content-Type" -> "application/json",
     "Accept" -> "application/json",
-    "Authorization" -> "bearer 428db083-68db-4794-848b-21d31729a5be"
+    "Authorization" -> "bearer b22ad169-b9fe-4176-9e38-7816953e8592"
   )
   /** ***********************************************/
 

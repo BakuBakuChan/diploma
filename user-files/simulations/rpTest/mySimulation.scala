@@ -8,7 +8,7 @@ import scala.concurrent.duration._
 class mySimulation extends Simulation {
 
   val httpProtocol = http
-    .baseUrl("http://127.0.0.1:8080/api/v1/test")
+    .baseUrl("http://192.168.1.104:8080/api/v1/reportportal4test")
     .inferHtmlResources()
     .inferHtmlResources(BlackList(""".*\.js""", """.*css.*""",""".*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.woff2""", """.*\.(t|o)tf""", """.*\.png""", """.*detectportal\.firefox\.com.*"""), WhiteList())
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
