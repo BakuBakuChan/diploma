@@ -32,32 +32,32 @@ class mySimulation extends Simulation {
 
   val myScenario = scenario("MyTestSimulation")
     .during(t_duration seconds) {
-      // randomSwitch(
-      //   85d ->
-      //     exec(myRequests.currentDate)
-      //       .exec(myRequests.postCreateLaunchRequest)
-      //       .repeat(10) {
-      //         exec(myRequests.postCreateSuiteRequest)
-      //           .repeat(10) {
-      //             exec(myRequests.postCreateTestRequest)
-      //               .repeat(10) {
-      //                 exec(myRequests.postCreateStepRequest)
-      //                   .repeat(8) {
-      //                     exec(myRequests.currentDate)
-      //                       .exec(myRequests.postCreateLogRequest)
-      //                   }
-      //                   .feed(jsonFileFeederL)
-      //                   .exec(myRequests.postCreateLogWithAttachRequest)
-      //                   .exec(myRequests.currentDate)
-      //                   .exec(myRequests.putFinishStepRequest)
-      //               }
-      //               .exec(myRequests.putFinishTestRequest)
-      //           }
-      //           .exec(myRequests.putFinishSuitRequest)
-      //       }
-      //       .exec(myRequests.putFinishLaunchRequest),
+      randomSwitch(
+        85d ->
+          exec(myRequests.currentDate)
+            .exec(myRequests.postCreateLaunchRequest)
+            .repeat(10) {
+              exec(myRequests.postCreateSuiteRequest)
+                .repeat(10) {
+                  exec(myRequests.postCreateTestRequest)
+                    .repeat(10) {
+                      exec(myRequests.postCreateStepRequest)
+                        .repeat(8) {
+                          exec(myRequests.currentDate)
+                            .exec(myRequests.postCreateLogRequest)
+                        }
+                        .feed(jsonFileFeederL)
+                        .exec(myRequests.postCreateLogWithAttachRequest)
+                        .exec(myRequests.currentDate)
+                        .exec(myRequests.putFinishStepRequest)
+                    }
+                    .exec(myRequests.putFinishTestRequest)
+                }
+                .exec(myRequests.putFinishSuitRequest)
+            }
+            .exec(myRequests.putFinishLaunchRequest),
 
-        // 15d ->
+        15d ->
          exec(myRequests.getLaunchesRequest)
           .exec(myRequests.iteratorsInit)
           .doIf(session => session("numberOfLaunches").as[Int] >= 1) {
@@ -79,7 +79,7 @@ class mySimulation extends Simulation {
                   }
               }
           }
-      // )
+      )
     }
     .exec(myRequests.currentDate)
     .exec(myRequests.putForceFinishLaunchRequest)

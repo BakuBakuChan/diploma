@@ -7,7 +7,7 @@ string(defaultValue: '60', description: 'in seconds',name: 'DURATION', trim: fal
 string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: false)])])
 
  stage("git pull"){
-      git branch: 'Reportportal_test', url: 'https://github.com/BakuBakuChan/tasks'
+      git branch: 'test_rp4', url: 'https://github.com/BakuBakuChan/diploma'
    }
  stage("Run gatling project"){
     sh label: '', script: '''docker run \\
@@ -15,8 +15,8 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
      --rm \\
      --name gatlingtest \\
      --link=influxdb \\
-    -v /var/lib/jenkins/workspace/reportPortal_OLD/gatling.conf:/opt/gatling/conf/gatling.conf \\
-    -v /var/lib/jenkins/workspace/reportPortal_OLD/user-files:/opt/gatling/user-files \\
+    -v /var/lib/jenkins/workspace/reportPortal4/gatling.conf:/opt/gatling/conf/gatling.conf \\
+    -v /var/lib/jenkins/workspace/reportPortal4/user-files:/opt/gatling/user-files \\
     -v /tmp/tasks/gatling/results:/opt/gatling/results \\
 denvazh/gatling \\
 -s rpTest.mySimulation'''
