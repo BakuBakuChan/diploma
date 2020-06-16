@@ -55,7 +55,7 @@ class mySimulation extends Simulation {
                 }
                 .exec(myRequests.putFinishSuitRequest)
             }
-            .exec(myRequests.putFinishLaunchRequest)
+            .exec(myRequests.putFinishLaunchRequest),
 
         15d -> exec(myRequests.getLaunchesRequest)
           .exec(myRequests.iteratorsInit)
