@@ -52,7 +52,7 @@ object myRequests {
     http("POST_Create_Log_With_Attach")
       .post("/log")
       .header("Content-Type", "multipart/form-data")
-      .header("Authorization", "bearer 0899ef96-8939-4bc1-b667-8dd59309ca48")
+      .header("Authorization", "bearer b22ad169-b9fe-4176-9e38-7816953e8592")
       .bodyPart(ElFileBodyPart("json_request_part", "create_log_with_attach.json")
         .contentType("application/json")
         .transferEncoding("8bit")).asMultipartForm
