@@ -32,8 +32,8 @@ class mySimulation extends Simulation {
 
   val myScenario = scenario("MyTestSimulation")
     .during(t_duration seconds) {
-      // randomSwitch(
-      //   85d ->
+      randomSwitch(
+        85d ->
           exec(myRequests.currentDate)
             .exec(myRequests.postCreateLaunchRequest)
             .repeat(10) {
@@ -57,28 +57,28 @@ class mySimulation extends Simulation {
             }
             .exec(myRequests.putFinishLaunchRequest)
 
-      //   15d -> exec(myRequests.getLaunchesRequest)
-      //     .exec(myRequests.iteratorsInit)
-      //     .doIf(session => session("numberOfLaunches").as[Int] >= 1) {
-      //       exec(myRequests.selectLaunchIdToRead).pause(lowerPause, middlePause)
-      //         .exec(myRequests.getSuitsRequest).pause(lowerPause, middlePause)
+        15d -> exec(myRequests.getLaunchesRequest)
+          .exec(myRequests.iteratorsInit)
+          .doIf(session => session("numberOfLaunches").as[Int] >= 1) {
+            exec(myRequests.selectLaunchIdToRead).pause(lowerPause, middlePause)
+              .exec(myRequests.getSuitsRequest).pause(lowerPause, middlePause)
 
-      //         .asLongAs(session => session("suitsIterator").as[Int] < session("suitsToRead").as[Int]) {
-      //           exec(myRequests.selectNumOfSuitsToRead).pause(lowerPause, middlePause)
-      //             .exec(myRequests.getTestsRequest).pause(lowerPause, middlePause)
+              .asLongAs(session => session("suitsIterator").as[Int] < session("suitsToRead").as[Int]) {
+                exec(myRequests.selectNumOfSuitsToRead).pause(lowerPause, middlePause)
+                  .exec(myRequests.getTestsRequest).pause(lowerPause, middlePause)
 
-      //             .asLongAs(session => session("testsIterator").as[Int] < session("testsToRead").as[Int]) {
-      //               exec(myRequests.selectNumOfTestToRead)
-      //                 .exec(myRequests.getStepsRequest).pause(lowerPause, middlePause)
+                  .asLongAs(session => session("testsIterator").as[Int] < session("testsToRead").as[Int]) {
+                    exec(myRequests.selectNumOfTestToRead)
+                      .exec(myRequests.getStepsRequest).pause(lowerPause, middlePause)
 
-      //                 .asLongAs(session => session("stepsIterator").as[Int] < session("stepsToRead").as[Int]) {
-      //                   exec(myRequests.selectNumOfStepsToRead)
-      //                     .exec(myRequests.getLogsRequest).pause(middlePause, higherPause)
-      //                 }
-      //             }
-      //         }
-      //     }
-      // )
+                      .asLongAs(session => session("stepsIterator").as[Int] < session("stepsToRead").as[Int]) {
+                        exec(myRequests.selectNumOfStepsToRead)
+                          .exec(myRequests.getLogsRequest).pause(middlePause, higherPause)
+                      }
+                  }
+              }
+          }
+      )
     }
     .exec(myRequests.currentDate)
     .exec(myRequests.putForceFinishLaunchRequest)
