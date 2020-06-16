@@ -112,7 +112,7 @@ object myRequests {
 
   var getSuits =
     http("GET_Suits")
-      .get("/item?filter.eq.launch=${launchId}&filter.eq.type=SUITE")
+      .get("/item?filter.eq.launch=${launchId}&filter.eq.name=Suite")
       .headers(mainHeaders)
 
   var getTest =
