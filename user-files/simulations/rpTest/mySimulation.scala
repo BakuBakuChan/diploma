@@ -82,7 +82,7 @@ class mySimulation extends Simulation {
       )
     }
     .exec(myRequests.currentDate)
-    .exec(myRequests.putForceFinishLaunchRequest)
+    // .exec(myRequests.putForceFinishLaunchRequest)
 
   setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_rampUp seconds)))
     .protocols(httpProtocol)
