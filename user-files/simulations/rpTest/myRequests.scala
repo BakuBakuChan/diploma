@@ -12,7 +12,7 @@ object myRequests {
   var mainHeaders = Map(
     "Content-Type" -> "application/json",
     "Accept" -> "application/json",
-    "Authorization" -> "bearer b22ad169-b9fe-4176-9e38-7816953e8592"
+    "Authorization" -> "bearer 338895a8-1c01-41d0-94de-7cc481900ba3"
   )
   /** ***********************************************/
 
@@ -52,7 +52,7 @@ object myRequests {
     http("POST_Create_Log_With_Attach")
       .post("/log")
       .header("Content-Type", "multipart/form-data")
-      .header("Authorization", "bearer b22ad169-b9fe-4176-9e38-7816953e8592")
+      .header("Authorization", "bearer 338895a8-1c01-41d0-94de-7cc481900ba3")
       .bodyPart(ElFileBodyPart("json_request_part", "create_log_with_attach.json")
         .contentType("application/json")
         .transferEncoding("8bit")).asMultipartForm
