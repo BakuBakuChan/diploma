@@ -1,8 +1,8 @@
 {
   "description": "In fermentum posuere urna nec tincidunt.",
-  "launch_id": "${launchId}",
+  "launchUuid": "${launchId}",
   "name": "Step",
   "retry": "false",
-  "start_time": "${currentTime}",
+  "startTime": "${currentTime}",
   "type": "STEP"
 }

@@ -1,6 +1,6 @@
 {
 "description": "In fermentum posuere urna nec tincidunt.",
-"end_time": "${currentTime}",
+"endTime": "${currentTime}",
 "retry": "false", 
 "status": "PASSED"
 }

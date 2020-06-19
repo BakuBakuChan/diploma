@@ -112,17 +112,17 @@ object myRequests {
 
   var getSuits =
     http("GET_Suits")
-      .get("/item?filter.eq.launch=${launchId}&filter.eq.name=Suite")
+      .get("/item?filter.eq.launchId=${launchId}&filter.eq.name=Suite")
       .headers(mainHeaders)
 
   var getTest =
     http("GET_Test")
-      .get("/item?filter.eq.parent=${suiteId}&filter.eq.launch=${launchId}")
+      .get("/item?filter.eq.parentId=${suiteId}&filter.eq.launchId=${launchId}")
       .headers(mainHeaders)
 
   var getStep =
     http("GET_Step")
-      .get("/item?filter.eq.parent=${testId}&filter.eq.launch=${launchId}")
+      .get("/item?filter.eq.parentId=${testId}&filter.eq.launchId=${launchId}")
       .headers(mainHeaders)
 
   var getLogs =
