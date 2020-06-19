@@ -1,37 +1,42 @@
-FROM openjdk:8-jre
+FROM openjdk:11-jre-slim
+
+### Set quay.io image cache. Since the build is for development only,
+### there is no need to keep them forever
+### details: https://support.coreos.com/hc/en-us/articles/115001384693-Tag-Expiration
+LABEL quay.expires-after=1w
 
 LABEL maintainer="Andrei Varabyeu <andrei_varabyeu@epam.com>"
-LABEL version="@version@"
+LABEL version="5.2.2"
 LABEL description="@description@"
+###reportportal/service-api:5.2.2
 
-ENV APP_FILE service-api-4.3.4
-ENV APP_DOWNLOAD_URL https://dl.bintray.com/epam/reportportal/com/epam/reportportal/service-api/4.3.4/$APP_FILE.jar
-ENV JAVA_OPTS="-Xmx1g -Djava.security.egd=file:/dev/./urandom"
-ENV JAVA_APP=/app.jar
-ENV JOLOKIA_AGENT="-javaagent:/opt/java/jolokia-jvm-1.6.0-agent.jar=port=7777,host=localhost"
+ENV APP_FILE service-api-5.2.2
+ENV APP_DOWNLOAD_URL https://dl.bintray.com/epam/reportportal/com/epam/reportportal/service-api/5.2.2/$APP_FILE.jar
 
 RUN apt-get update && \
-    apt-get install -y fonts-noto && \
-    rm -rf /var/lib/apt/lists/*
-	
-# Installing Java Jolokia
-RUN  mkdir /opt/java && cd /opt/java \
- && wget -O jolokia-jvm-1.6.0-agent.jar \
- http://search.maven.org/remotecontent?filepath=org/jolokia/jolokia-jvm/1.6.0/jolokia-jvm-1.6.0-agent.jar
+    apt-get install fonts-noto-core -y
+
+RUN echo '#!/bin/sh \n exec java ${JAVA_OPTS} -jar ${APP_FILE}' > /start.sh && \
+    chmod +x /start.sh
+
+# Set default JAVA_OPTS and JAVA_APP
+ENV JAVA_OPTS="-Xmx1g -Djava.security.egd=file:/dev/./urandom"
+ENV JAVA_APP=/app/app.jar
 
 # Installing Telegraf
 RUN cd /tmp && wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.3-1_amd64.deb && \
     dpkg -i telegraf_1.8.3-1_amd64.deb
 COPY ./docker/telegraf.conf /etc/telegraf/telegraf.conf
 
-
 RUN sh -c "echo '#!/bin/sh \n\
-service telegraf restart \n\
-exec java $JOLOKIA_AGENT $JAVA_OPTS -jar $JAVA_APP' > /start.sh && chmod +x /start.sh"
+service telegraf restart"
 
 VOLUME /tmp
 
-RUN wget -O $JAVA_APP $APP_DOWNLOAD_URL
+RUN mkdir /app
+COPY build/libs/service-api.jar $JAVA_APP
+
+RUN sh -c "touch $JAVA_APP"
 
 EXPOSE 8080
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT /start.sh
