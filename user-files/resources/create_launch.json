@@ -2,5 +2,5 @@
 "description": "In fermentum posuere urna nec tincidunt.",
 "mode": "DEFAULT",
 "name": "Launch",
-"startTime": "${currentTime}"
+"start_time": "${currentTime}"
 }

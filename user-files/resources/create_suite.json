@@ -1,8 +1,8 @@
 {
 "description": "In fermentum posuere urna nec tincidunt.",
-"launchUuid": "${launchId}",
+"launch_id": "${launchId}",
 "name": "Suite",
 "retry": "false", 
-"startTime": "${currentTime}",
+"start_time": "${currentTime}",
 "type": "SUITE"
 }

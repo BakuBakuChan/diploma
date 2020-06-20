@@ -1,5 +1,5 @@
 {
 "description": "In fermentum posuere urna nec tincidunt.",
-"endTime": "${currentTime}", 
+"end_time": "${currentTime}", 
 "status": "PASSED"
 }

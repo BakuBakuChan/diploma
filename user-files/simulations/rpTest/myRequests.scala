@@ -12,7 +12,7 @@ object myRequests {
   var mainHeaders = Map(
     "Content-Type" -> "application/json",
     "Accept" -> "application/json",
-    "Authorization" -> "bearer 338895a8-1c01-41d0-94de-7cc481900ba3"
+    "Authorization" -> "bearer 89370684-9865-4379-98fc-dc3f79a58c90"
   )
   /** ***********************************************/
 
@@ -52,7 +52,7 @@ object myRequests {
     http("POST_Create_Log_With_Attach")
       .post("/log")
       .header("Content-Type", "multipart/form-data")
-      .header("Authorization", "bearer 338895a8-1c01-41d0-94de-7cc481900ba3")
+      .header("Authorization", "bearer 89370684-9865-4379-98fc-dc3f79a58c90")
       .bodyPart(ElFileBodyPart("json_request_part", "create_log_with_attach.json")
         .contentType("application/json")
         .transferEncoding("8bit")).asMultipartForm
@@ -112,17 +112,17 @@ object myRequests {
 
   var getSuits =
     http("GET_Suits")
-      .get("/item?filter.eq.launchId=${launchId}&filter.eq.name=Suite")
+      .get("/item?filter.eq.launch=${launchId}&filter.eq.name=Suite")
       .headers(mainHeaders)
 
   var getTest =
     http("GET_Test")
-      .get("/item?filter.eq.parentId=${suiteId}&filter.eq.launchId=${launchId}")
+      .get("/item?filter.eq.parent=${suiteId}&filter.eq.launch=${launchId}")
       .headers(mainHeaders)
 
   var getStep =
     http("GET_Step")
-      .get("/item?filter.eq.parentId=${testId}&filter.eq.launchId=${launchId}")
+      .get("/item?filter.eq.parent=${testId}&filter.eq.launch=${launchId}")
       .headers(mainHeaders)
 
   var getLogs =
